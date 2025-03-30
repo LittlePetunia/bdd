@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="bd.css">
+</head>
+    <title>啦啦啦</title>
+    <body>
+        <div class="usagi">
+            <div class="head">
+            <div class="wrap">
+                <div class="flush"></div>
+                <div class="face"></div>
+                <div class="mouth"></div>
+                <div class="nose"></div>
+            </div>
+            </div>
+        </div>
+        <div class="piske">
+            <div class="head">
+            <div class="eyes"></div>
+            <div class="flush"></div>
+            <div class="mouth"></div>
+            </div>
+        </div>
+        
+        <div class="input-container">
+            <div class="sayit">
+                <div class="sayit-string">说&nbsp;你&nbsp;爱&nbsp;我</div>
+            </div>
+            <input type="text" class="input-box" id="loveInput" placeholder="快点说">
+            <div class="message" id="message" style="color: white; font-family: 'Heiti SC';"></div>
+        </div>
+
+        <div class="msg-container hidden" id="isay">
+            
+            <div class="display-middle">
+                <h3 id="msg-content" class='display-middle'></h3>
+              </div>              
+        </div>
+        
+        <script>
+            const input = document.getElementById("loveInput");
+            const message = document.getElementById("message");
+            const container = document.querySelector(".input-container");
+            const msgbox = document.querySelector(".msg-container");
+            input.addEventListener("input", () => {
+              if (input.value === "我爱你") {
+                message.textContent = "🥰 Show time! 💕";
+                input.style.display = "none";
+                container.style.display = "none"
+                msgbox.classList.remove("hide");
+                msgbox.classList.add("visible")
+              } else {
+                message.textContent = "说的不对 赶紧的";
+              }
+            });
+            var type = function(text,element,speed,mode){
+                var input= text,
+                    i = 0,
+                    to = element,
+                    arrow='_',
+                    typesrc='',
+                    open=0,
+                    changeArrow = function(){
+                        setInterval(function(){
+                            if(arrow=='_')arrow=' ';
+                            else arrow='_';
+                            typesrc=typesrc.replace('_','')+arrow;
+                        },380)
+                    },
+                    str=input.split(''); 
+                    setInterval(function(){
+                        if(i<str.length){                       
+                            typesrc=typesrc.replace('_','')+str[i]+'_';
+                            i++;
+                        }
+                        else{
+                        if (mode==true){
+                            i=0;
+                            typesrc ='_';
+                        }
+                        else if(open==0){
+                            changeArrow();
+                            open=1;
+                        }
+                    }
+                    to.innerHTML=typesrc;
+                },speed)     
+            }           
+            type('30岁啦，是大人啦。但我希望你，可以永远做小孩，快乐，平安，无忧无虑。生日快乐。❤️❤️🎂🎂🎂🎂🎂🎂🎂----娇娇',document.getElementById("msg-content"),600,false)
+            
+          </script>
+    </body>
+</html>
